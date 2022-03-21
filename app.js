@@ -1,9 +1,12 @@
 const express = require('express')
 const AppError = require('./utils/appError')
 const authRouter = require('./routes/authRoutes')
+const json = require('jsonwebtoken')
 
 
 const app = express()
+
+app.use(express.json({ limit: "10kb" }))
 
 app.use('/api/auth', authRouter)
 
