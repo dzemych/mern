@@ -1,12 +1,22 @@
 const express = require('express')
 const AppError = require('./utils/appError')
 const authRouter = require('./routes/authRoutes')
-const json = require('jsonwebtoken')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 
 const app = express()
 
-app.use(express.json({ limit: "10kb" }))
+app.use(express.json())
+
+app.use(cors({
+   origin: 'http://localhost:3000',
+}))
+
+app.use((req, res, next) => {
+   res.set('Access-Control-Allow-Methods', '*')
+   next()
+})
 
 app.use('/api/auth', authRouter)
 
