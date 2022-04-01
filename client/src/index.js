@@ -5,6 +5,8 @@ import './index.sass';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+export const host = 'http://localhost:5000'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
